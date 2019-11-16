@@ -9,7 +9,7 @@ This package provides an easy implementation of a Expansion type card where you 
 
 
 <p>
-    <img src="https://github.com/anirudhsharma392/Slider-Button/blob/master/screenshots/button_2.gif?raw=true"/>
+    <img src="https://github.com/anirudhsharma392/Expansion-Card/blob/master/screenshots/expansion_card.gif?raw=true"/>
 
 </p>
 
