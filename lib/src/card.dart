@@ -76,7 +76,7 @@ class ExpansionCard extends StatefulWidget {
   _ExpansionTileState createState() => _ExpansionTileState();
 }
 
-class _ExpansionTileState extends State<ExpansionTile> with SingleTickerProviderStateMixin {
+class _ExpansionTileState extends State<ExpansionCard> with SingleTickerProviderStateMixin {
   static final Animatable<double> _easeOutTween = CurveTween(curve: Curves.easeOut);
   static final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
   static final Animatable<double> _halfTween = Tween<double>(begin: 0.0, end: 0.5);
@@ -141,14 +141,14 @@ class _ExpansionTileState extends State<ExpansionTile> with SingleTickerProvider
   Widget _buildChildren(BuildContext context, Widget child) {
     final Color borderSideColor =Colors.transparent;// _borderColor.value ??
 
-    return Stack(children: <Widget>[
-
-      ClipRRect(
-        borderRadius: BorderRadius.circular(30.0),
-        child: Align(
-          heightFactor: _heightFactor.value<0.5?0.5:_heightFactor.value,
-          child: Image.asset(
-            "${widget.gif}",fit: BoxFit.cover,
+        return Stack(children: <Widget>[
+    
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: Align(
+              heightFactor: _heightFactor.value<0.5?0.5:_heightFactor.value,
+              child: Image.asset(
+                widget.gif,fit: BoxFit.cover,
           ),
         ),
       ),
