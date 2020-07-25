@@ -1,4 +1,4 @@
-# Slider Button
+# Expansion card
 ![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
 This package provides an easy implementation of a Expansion type card where you can also add gif at the background.
