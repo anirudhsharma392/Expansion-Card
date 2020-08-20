@@ -21,7 +21,7 @@ import 'package:expansion_card/expansion_card.dart';
 ```dart
 Center(
             child: ExpansionCard(
-              gif: 'assets/animations/planets.gif',
+              background: Image.asset("assets/animations/sleep.gif"),
               title: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ There are several options that allow for more control:
 |  Properties  |   Description   |
 |--------------|--------------|
 | `leading` |  Define an action after slidding a button |
-| `gif` | (String) address of your gif file ot image file for background|
+| `background` | provide any image asset file (supports gif also)|
 | `onExpansionChanged` |  When the tile starts expanding, this function is called with the value true. When the tile starts collapsing, this function is called with the value false.|
 | `trailing` | A widget to display instead of a rotating arrow icon |
 | `initiallyExpanded` | Specifies if the list tile is initially expanded (true) or collapsed (false, the default) |
