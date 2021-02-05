@@ -37,6 +37,7 @@ class ExpansionCard extends StatefulWidget {
     this.children = const <Widget>[],
     this.trailing,
     this.initiallyExpanded = false,
+    this.color,
   }) : assert(initiallyExpanded != null),
         super(key: key);
 
@@ -71,6 +72,9 @@ class ExpansionCard extends StatefulWidget {
 
   /// Specifies if the list tile is initially expanded (true) or collapsed (false, the default).
   final bool initiallyExpanded;
+  
+  /// Color of the title bar and icon in the expanded state.
+  final Color color;
 
   @override
   _ExpansionTileState createState() => _ExpansionTileState();
@@ -196,10 +200,10 @@ class _ExpansionTileState extends State<ExpansionCard> with SingleTickerProvider
       ..end = theme.dividerColor;
     _headerColorTween
       ..begin = Colors.white
-      ..end = Color(0xff60c9df);
+      ..end = widget.color ?? Color(0xff60c9df);
     _iconColorTween
       ..begin = Colors.white
-      ..end = Color(0xff60c9df);
+      ..end = widget.color ?? Color(0xff60c9df);
     _backgroundColorTween
       ..end = widget.backgroundColor;
     super.didChangeDependencies();
