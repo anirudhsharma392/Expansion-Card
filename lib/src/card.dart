@@ -38,8 +38,7 @@ class ExpansionCard extends StatefulWidget {
     this.trailing,
     this.initiallyExpanded = false,
     this.color,
-  }) : assert(initiallyExpanded != null),
-        super(key: key);
+  }) : super(key: key);
 
   final String? gif;
   /// A widget to display before the title.
@@ -93,7 +92,6 @@ class _ExpansionTileState extends State<ExpansionCard> with SingleTickerProvider
   late AnimationController _controller;
   late Animation<double> _iconTurns;
   late Animation<double> _heightFactor;
-  Animation<Color?>? _borderColor;
   late Animation<Color?> _headerColor;
   late Animation<Color?> _iconColor;
   late Animation<Color?> _backgroundColor;
@@ -106,7 +104,6 @@ class _ExpansionTileState extends State<ExpansionCard> with SingleTickerProvider
     _controller = AnimationController(duration: _kExpand, vsync: this);
     _heightFactor = _controller.drive(_easeInTween);
     _iconTurns = _controller.drive(_halfTween.chain(_easeInTween));
-    _borderColor = _controller.drive(_borderColorTween.chain(_easeOutTween));
     _headerColor = _controller.drive(_headerColorTween.chain(_easeInTween));
     _iconColor = _controller.drive(_iconColorTween.chain(_easeInTween));
     _backgroundColor = _controller.drive(_backgroundColorTween.chain(_easeOutTween));
