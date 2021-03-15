@@ -38,6 +38,7 @@ class ExpansionCard extends StatefulWidget {
     this.initiallyExpanded = false,
     this.color,
     this.expansionArrowColor,
+    this.topMargin = 55,
   }) : super(key: key);
 
   final String? gif;
@@ -78,6 +79,12 @@ class ExpansionCard extends StatefulWidget {
 
   /// Color of the expansion arrow icon.
   final Color? expansionArrowColor;
+
+  /// The top margin of the expansion card
+  ///
+  /// sets the height of the widget
+  /// default is 55
+  final double topMargin;
 
   @override
   _ExpansionTileState createState() => _ExpansionTileState();
@@ -180,7 +187,7 @@ class _ExpansionTileState extends State<ExpansionCard>
                   iconColor: _iconColor.value,
                   textColor: _headerColor.value,
                   child: Container(
-                    margin: EdgeInsets.only(top: 55),
+                    margin: EdgeInsets.only(top: widget.topMargin),
                     child: ListTile(
                       onTap: _handleTap,
                       leading: widget.leading,
