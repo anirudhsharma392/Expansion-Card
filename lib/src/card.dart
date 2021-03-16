@@ -37,12 +37,11 @@ class ExpansionCard extends StatefulWidget {
     this.trailing,
     this.initiallyExpanded = false,
     this.color,
-
     this.expansionArrowColor,
-  })  : assert(initiallyExpanded != null),
-        super(key: key);
+    this.topMargin = 55,
+  }) : super(key: key);
 
-  final String gif;
+  final String? gif;
 
   /// A widget to display before the title.
   ///
@@ -79,7 +78,13 @@ class ExpansionCard extends StatefulWidget {
   final Color? color;
 
   /// Color of the expansion arrow icon.
-  final Color expansionArrowColor;
+  final Color? expansionArrowColor;
+
+  /// The top margin of the expansion card
+  ///
+  /// sets the height of the widget
+  /// default is 55
+  final double topMargin;
 
   @override
   _ExpansionTileState createState() => _ExpansionTileState();
@@ -149,23 +154,24 @@ class _ExpansionTileState extends State<ExpansionCard>
       widget.onExpansionChanged!(_isExpanded);
   }
 
-
-  Widget _buildChildren(BuildContext context, Widget child) {
+  Widget _buildChildren(BuildContext context, Widget? child) {
     final Color borderSideColor = Colors.transparent; // _borderColor.value ??
 
     return Stack(
       children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30.0),
-          child: Align(
-            heightFactor: _heightFactor.value < 0.5 ? 0.5 : _heightFactor.value,
-            child: Image.asset(
-              widget.gif,
-              fit: BoxFit.cover,
-            ),
-
-          ),
-        ),
+        widget.gif != null
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+                child: Align(
+                  heightFactor:
+                      _heightFactor.value < 0.5 ? 0.5 : _heightFactor.value,
+                  child: Image.asset(
+                    widget.gif!,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            : const SizedBox.shrink(),
         Container(
           decoration: BoxDecoration(
             color: _backgroundColor.value ?? Colors.transparent,
@@ -181,7 +187,7 @@ class _ExpansionTileState extends State<ExpansionCard>
                   iconColor: _iconColor.value,
                   textColor: _headerColor.value,
                   child: Container(
-                    margin: EdgeInsets.only(top: 55),
+                    margin: EdgeInsets.only(top: widget.topMargin),
                     child: ListTile(
                       onTap: _handleTap,
                       leading: widget.leading,
